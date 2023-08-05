@@ -1,0 +1,27 @@
+{
+  "name": "food",
+  "version": "0.17.3",
+  "description": "npm for first project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/github.com/davnalbandyan.git"
+  },
+  "keywords": [
+    "food",
+    "web",
+    "front-end"
+  ],
+  "author": "David Nalbandyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/github.com/davnalbandyan/issues"
+  },
+  "homepage": "https://github.com/github.com/davnalbandyan#readme",
+  "devDependencies": {
+    "json-server": "^0.17.3"
+  }
+}

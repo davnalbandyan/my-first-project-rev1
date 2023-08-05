@@ -216,6 +216,7 @@ window.addEventListener("load", () => {
       e.preventDefault();
 
       const { loading, success, fail } = messages;
+
       const loader = document.createElement("div");
       loader.innerHTML = spin();
       form.append(loader);
@@ -226,26 +227,44 @@ window.addEventListener("load", () => {
         form.reset();
       }
 
-      const request = new XMLHttpRequest();
-
-      request.open("POST", "server.php");
-
       const formData = new FormData(form);
-      request.send(formData);
 
-      request.addEventListener("load", () => {
-        if (request.status === 200) {
-          console.log(request.response);
+      const data = {};
+      formData.forEach((value, key) => (data[key] = value));
+
+      fetch("server.php", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((data) => data.text())
+        .then((data) => {
+          console.log(data);
           massageModal(success);
+        })
+        .catch((error) => {
+          massageModal(fail + ": " + error);
+        })
+        .finally(() => {
           loader.remove();
           form.reset();
-        } else {
-          console.error("Error");
-          massageModal(fail);
-          loader.remove();
-          form.reset();
-        }
-      });
+        });
+
+      // request.addEventListener("load", () => {
+      //   if (request.status === 200) {
+      //     console.log(request.response);
+      //     massageModal(success);
+      //     loader.remove();
+      //     form.reset();
+      //   } else {
+      //     console.error("Error");
+      //     massageModal(fail);
+      //     loader.remove();
+      //     form.reset();
+      //   }
+      // });
     });
   }
 
