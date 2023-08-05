@@ -290,5 +290,9 @@ window.addEventListener("load", () => {
       close();
     }, 2000);
   }
+
+  fetch("http://localhost:8888/menu").then(data=> data.json()
+  )
+  .then(data=>console.log(data))
   //post request end
 });
