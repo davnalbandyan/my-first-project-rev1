@@ -210,8 +210,22 @@ window.addEventListener("load", () => {
     fail: "Sorry something went wrong",
   };
 
-  forms.forEach((form) => postData(form));
-  function postData(form) {
+  forms.forEach((form) => bindpostData(form));
+
+  async function postData(url, data) {
+    const request = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Contnet-type": "application/json; charset=utf-8"
+      },
+      body: data
+    })
+
+    return await request.json();
+
+  }
+
+  function bindpostData(form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -231,14 +245,8 @@ window.addEventListener("load", () => {
 
       const data = {};
       formData.forEach((value, key) => (data[key] = value));
-
-      fetch("server.php", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
+  
+      postData("http://localhost:8888/requests", JSON.stringify(data))
         .then((data) => data.text())
         .then((data) => {
           console.log(data);
@@ -251,6 +259,8 @@ window.addEventListener("load", () => {
           loader.remove();
           form.reset();
         });
+        console.log(JSON.stringify(data));
+
 
       // request.addEventListener("load", () => {
       //   if (request.status === 200) {
@@ -290,9 +300,6 @@ window.addEventListener("load", () => {
       close();
     }, 2000);
   }
+  
 
-  fetch("http://localhost:8888/menu").then(data=> data.json()
-  )
-  .then(data=>console.log(data))
-  //post request end
 });
