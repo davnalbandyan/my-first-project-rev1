@@ -167,6 +167,7 @@ axios.get("http://localhost:8888/menu")
   //used class for menu card end
 // forms part start
   const forms = document.querySelectorAll("form");
+  
 
   function spin() {
     return ` 
@@ -229,8 +230,24 @@ axios.get("http://localhost:8888/menu")
         loader.remove();
         form.reset();
       }
+      const empty = /^$/g;
+			const phone = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+			let status = false
 
-      const formData = new FormData(form);
+			for (let i = 0; i < form.querySelectorAll("input").length; i++) {
+				if (empty.test(form[i].value) || !phone.test(form[1].value)) {
+					status = false;
+					massageModal("Please fill all fields. On phone filed please fill telephone number format");
+					loader.remove();
+					form.reset();
+					break;
+				} else {
+					status = true;
+				}
+			}
+
+      if(status){
+        const formData = new FormData(form);
 
       // const data = JSON.stringify(Object.fromEntries(formData.entries()));
       
@@ -248,6 +265,34 @@ axios.get("http://localhost:8888/menu")
           loader.remove();
           form.reset();
         });
+       
+      }else{
+        console.log("status is falsed");
+      }
+
+		
+      
+
+     
+
+      // const formData = new FormData(form);
+
+      // // const data = JSON.stringify(Object.fromEntries(formData.entries()));
+      
+  
+      // // postData("http://localhost:8888/requests", data)
+      //   axios.post("http://localhost:8888/requests",Object.fromEntries(formData.entries()))
+      //   .then((data) => {
+      //     console.log(data);
+      //     massageModal(success);
+      //   })
+      //   .catch((error) => {
+      //     massageModal(fail + ": " + error);
+      //   })
+      //   .finally(() => {
+      //     loader.remove();
+      //     form.reset();
+      //   });
        
 
       // request.addEventListener("load", () => {
@@ -375,7 +420,9 @@ for (let i = 0; i < slides.length; i++) {
   }
   dotsWrapper.append(dot);
   dots.push(dot);
+  
 }
+
 
 function nextOne(){
   next.addEventListener("click", () => {  
@@ -428,6 +475,8 @@ dots.forEach(dot => {
     dots()
   })
 })
+
+
 
 
 
