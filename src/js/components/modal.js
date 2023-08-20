@@ -1,3 +1,15 @@
+function open(modal) {
+  modal.classList.add("show");
+  modal.classList.remove("hide");
+  document.body.style.overflow = "hidden";
+}
+
+function close(modal) {
+  modal.classList.remove("show");
+  modal.classList.add("hide");
+  document.body.removeAttribute("style");
+}
+
 function modalMudul (){
    
    const modalTrig = document.querySelectorAll("[data-modal]");
@@ -5,44 +17,32 @@ function modalMudul (){
    const modalClose = document.querySelector("[data-close]");
  
    modalTrig.forEach((item) => {
-     item.addEventListener("click", open);
+     item.addEventListener("click",()=> open(modal));
  
      modalClose.addEventListener("click", close);
  
      modal.addEventListener("click", (e) => {
        if (e.target === modal) {
-         close();
+         close(modal);
        }
      });
    });
    window.addEventListener("keydown", (e) => {
      if (e.key === "Escape" && modal.matches(".show")) {
-       close();
+       close(modal);
      }
    });
  
    function showMod() {
      if (window.scrollY >= 1000) {
-       open();
+       open(modal);
        window.removeEventListener("scroll", showMod);
      }
    }
    window.addEventListener("scroll", showMod);
-   function open() {
-     modal.classList.add("show");
-     modal.classList.remove("hide");
-     document.body.style.overflow = "hidden";
-   }
  
-   function close() {
-     modal.classList.remove("show");
-     modal.classList.add("hide");
-     document.body.removeAttribute("style");
-   }
- 
-  
 }
 
-// module.exports = modalMudul;
 
+export {open,close }
 export default modalMudul

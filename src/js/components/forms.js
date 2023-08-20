@@ -1,4 +1,5 @@
-const spin = require("./sppiner")
+const spin = require("./sppiner");
+import { open,close } from "./modal";
 
 function formsModule (){
     const forms = document.querySelectorAll("form");
@@ -108,8 +109,9 @@ function formsModule (){
   
     function massageModal(message) {
       const prevModal = document.querySelector(".modal__dialog");
+      const modal = document.querySelector(".modal");
       prevModal.classList.add("hide");
-      open();
+      open(modal);
   
       const mesModal = document.createElement("div");
       mesModal.classList.add(".modal__dialog");
@@ -120,12 +122,12 @@ function formsModule (){
       </div>
       `;
   
-      document.querySelector(".modal").append(mesModal);
+      modal.append(mesModal);
       setTimeout(() => {
         mesModal.remove();
         prevModal.classList.add("show");
         prevModal.classList.remove("hide");
-        close();
+        close(modal);
       }, 2000);
     }
 }

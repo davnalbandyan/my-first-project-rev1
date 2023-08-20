@@ -25,53 +25,13 @@
   "requests": [
     {
       "name": "Nalbandyan",
-      "phone": "99060699",
+      "phone": "+37477939223",
       "id": 1
     },
     {
-      "name": "Vito Scaletta",
-      "phone": "+2545484694",
+      "name": "Nalbandyan",
+      "phone": "+37498899889",
       "id": 2
-    },
-    {
-      "name": "Nalbandyan",
-      "phone": "99060699",
-      "id": 3
-    },
-    {
-      "name": "Vito Scaletta",
-      "phone": "77939223",
-      "id": 4
-    },
-    {
-      "name": "Nalbandyan",
-      "phone": "99060699",
-      "id": 5
-    },
-    {
-      "name": "David",
-      "phone": "99060699",
-      "id": 6
-    },
-    {
-      "name": "Nalbandyan",
-      "phone": "99060699",
-      "id": 7
-    },
-    {
-      "name": "David",
-      "phone": "+37499060799",
-      "id": 8
-    },
-    {
-      "name": "Nalbandyan",
-      "phone": "+37477939223",
-      "id": 9
-    },
-    {
-      "name": "David",
-      "phone": "+37498043860",
-      "id": 10
     }
   ]
 }
