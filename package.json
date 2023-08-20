@@ -2,7 +2,7 @@
   "name": "food",
   "version": "0.17.3",
   "description": "npm for first project",
-  "private":"true",
+  "private": "true",
   "scripts": {
     "serve": "json-server --watch ./src/db.json --port 8888",
     "build": "webpack"
@@ -23,8 +23,24 @@
   },
   "homepage": "https://github.com/github.com/davnalbandyan#readme",
   "devDependencies": {
+    "@babel/core": "^7.22.10",
+    "@babel/plugin-transform-arrow-functions": "^7.22.5",
+    "@babel/plugin-transform-destructuring": "^7.22.10",
+    "@babel/plugin-transform-duplicate-keys": "^7.22.5",
+    "@babel/plugin-transform-for-of": "^7.22.5",
+    "@babel/plugin-transform-function-name": "^7.22.5",
+    "@babel/plugin-transform-parameters": "^7.22.5",
+    "@babel/plugin-transform-shorthand-properties": "^7.22.5",
+    "@babel/plugin-transform-spread": "^7.22.5",
+    "@babel/plugin-transform-sticky-regex": "^7.22.5",
+    "@babel/plugin-transform-template-literals": "^7.22.5",
+    "@babel/preset-env": "^7.22.10",
+    "babel-loader": "^9.1.3",
     "json-server": "^0.17.3",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1"
   }
 }
