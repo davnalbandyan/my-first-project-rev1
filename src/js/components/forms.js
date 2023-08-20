@@ -2,8 +2,12 @@ const spin = require("./sppiner");
 import { open,close } from "./modal";
 
 function formsModule (){
-    const forms = document.querySelectorAll("form");
-  
+
+    // const forms = document.querySelectorAll("form");
+  function forms (selectorForms){
+    selectorForms.forEach((form) => bindpostData(form));
+  }
+  forms(document.querySelectorAll("form"))
 
    
   
@@ -13,7 +17,7 @@ function formsModule (){
       fail: "Sorry something went wrong",
     };
   
-    forms.forEach((form) => bindpostData(form));
+    // forms.forEach((form) => bindpostData(form));
   
   //   async function postData(url, data) {
   //     const request = await fetch(url, {
